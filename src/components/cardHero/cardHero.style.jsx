@@ -8,4 +8,9 @@ export const CardContainer = styled.div`
   width: 100%;
   margin-bottom: 45px;
   overflow: hidden;
+
+  @media screen and (max-width: 800px) {
+    max-width: 80%;
+    margin: 0 auto 45px;
+  }
 `;
