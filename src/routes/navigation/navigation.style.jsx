@@ -6,6 +6,7 @@ export const NavigationContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  padding-bottom: 40px;
 `;
 export const LogoContainer = styled(Link)``;
 export const NavLinks = styled.div`
@@ -15,5 +16,5 @@ export const NavLink = styled(Link)`
   padding: 20px;
   text-decoration: none;
   color: #fff;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 `;
