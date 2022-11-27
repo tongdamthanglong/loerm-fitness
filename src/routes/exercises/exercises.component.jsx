@@ -1,17 +1,10 @@
 import SearchBox from "../../components/searchBox/searchBox.component";
-import {
-  ExercisesContainer,
-  FlexContainer,
-  SearchBtn,
-} from "./exercises.style";
+import { ExercisesContainer } from "./exercises.style";
 const Exercises = () => {
   return (
     <>
       <ExercisesContainer>
-        <FlexContainer>
-          <SearchBox />
-          <SearchBtn>Search</SearchBtn>
-        </FlexContainer>
+        <SearchBox />
       </ExercisesContainer>
     </>
   );
