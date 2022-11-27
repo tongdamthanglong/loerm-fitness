@@ -10,7 +10,7 @@ export const CardContainer = styled.div`
   overflow: hidden;
 
   @media screen and (max-width: 800px) {
-    max-width: 80%;
+    max-width: 85%;
     margin: 0 auto 45px;
   }
 `;

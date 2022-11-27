@@ -1,9 +1,18 @@
-import React from "react";
-
+import SearchBox from "../../components/searchBox/searchBox.component";
+import {
+  ExercisesContainer,
+  FlexContainer,
+  SearchBtn,
+} from "./exercises.style";
 const Exercises = () => {
   return (
     <>
-      <div>Exercises</div>
+      <ExercisesContainer>
+        <FlexContainer>
+          <SearchBox />
+          <SearchBtn>Search</SearchBtn>
+        </FlexContainer>
+      </ExercisesContainer>
     </>
   );
 };
