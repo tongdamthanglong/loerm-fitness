@@ -4,7 +4,13 @@ import {
   SearchInput,
   SearchBtn,
 } from "./searchBox.style";
-const SearchBox = ({ handleChange, handleSearch }) => {
+const SearchBox = ({
+  handleChange,
+  handleSearch,
+  setExercises,
+  bodyPart,
+  setBodyPart,
+}) => {
   return (
     <>
       <SearchContainer>

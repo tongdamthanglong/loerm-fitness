@@ -4,7 +4,7 @@ import {
   ExercisesDirectoryItem,
 } from "./exercisesDirectory.style";
 
-const ExercisesDirectory = ({ data }) => {
+const ExercisesDirectory = ({ data, exercises, setExercises, bodyPart }) => {
   return (
     <>
       <ExercisesDirectoryContainer>

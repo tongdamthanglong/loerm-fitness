@@ -1,11 +1,16 @@
 import { useState, useEffect } from "react";
 import { fetchData, exerciseOptions } from "../../utils/fetchData";
+
 import SearchBox from "../../components/searchBox/searchBox.component";
 import ExercisesDirectory from "../../components/exercisesDirectory/exercisesDirectory.component";
+import ExercisesDirectoryList from "../../components/exercisesDirectoryList/exercisesDirectoryList.component";
+
 import { ExercisesContainer } from "./exercises.style";
+
 const Exercises = () => {
   const [search, setSearch] = useState("");
   const [exercises, setExercises] = useState([]);
+  const [bodyPart, setBodyPart] = useState("all");
   const [bodyParts, setBodyParts] = useState([]);
 
   useEffect(() => {
@@ -44,8 +49,24 @@ const Exercises = () => {
   return (
     <>
       <ExercisesContainer>
-        <SearchBox handleChange={handleChange} handleSearch={handleSearch} />
-        <ExercisesDirectory data={bodyParts} />
+        <SearchBox
+          handleChange={handleChange}
+          handleSearch={handleSearch}
+          setExercises={setExercises}
+          bodyPart={bodyPart}
+          setBodyPart={setBodyPart}
+        />
+        <ExercisesDirectory
+          data={bodyParts}
+          exercises={exercises}
+          setExercises={setExercises}
+          bodyPart={bodyPart}
+        />
+        <ExercisesDirectoryList
+          exercises={exercises}
+          setExercises={setExercises}
+          bodyPart={bodyPart}
+        />
       </ExercisesContainer>
     </>
   );
