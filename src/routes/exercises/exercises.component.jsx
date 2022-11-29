@@ -39,6 +39,7 @@ const Exercises = () => {
           exercise.equipment.toLowerCase().includes(search)
       );
       setSearch("");
+      console.log(search);
       setExercises(searchedExercise);
     }
   };

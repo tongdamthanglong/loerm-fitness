@@ -1,3 +1,7 @@
+import { useState, useEffect } from "react";
+
+import { fetchData, exerciseOptions } from "../../utils/fetchData";
+
 import {
   ExercisesDirectoryListContainer,
   ExercisesDirectoryListItemContainer,
@@ -9,28 +13,40 @@ import {
   ExercisesDirectoryListItemTag2,
   ExercisesDirectoryListItemTitle,
 } from "./exercisesDirectoryList.style";
-const ExercisesDirectoryList = () => {
+const ExercisesDirectoryList = ({ exercises, setExercises, bodyPart }) => {
   return (
-    <ExercisesDirectoryListContainer>
-      <ExercisesDirectoryListItemContainer>
-        <ExercisesDirectoryListItemImageContainer>
-          <ExercisesDirectoryListItemImage />
-        </ExercisesDirectoryListItemImageContainer>
-        <ExercisesDirectoryListItemTagContainer>
-          <ExercisesDirectoryListItemTag1>
-            Upper Legs
-          </ExercisesDirectoryListItemTag1>
-          <ExercisesDirectoryListItemTag2>
-            Glutes
-          </ExercisesDirectoryListItemTag2>
-        </ExercisesDirectoryListItemTagContainer>
-        <ExercisesDirectoryListItemTitle>
-          {`Exercises Directory List`.toUpperCase()}
-        </ExercisesDirectoryListItemTitle>
-        <ExercisesDirectoryListItem></ExercisesDirectoryListItem>
-      </ExercisesDirectoryListItemContainer>
-      {/* $$$$$$$$$$$$$$$$$$$$$$$$$$$$$ */}
-    </ExercisesDirectoryListContainer>
+    <>
+      <ExercisesDirectoryListContainer>
+        {exercises.map((exercise) => {
+          return (
+            <ExercisesDirectoryListItemContainer
+              key={exercise.id}
+              to={`/exercise/${exercise.id}`}
+            >
+              <ExercisesDirectoryListItemImageContainer>
+                <ExercisesDirectoryListItemImage
+                  src={exercise.gifUrl}
+                  alt={exercise.name}
+                  loading="lazy"
+                />
+              </ExercisesDirectoryListItemImageContainer>
+              <ExercisesDirectoryListItemTagContainer>
+                <ExercisesDirectoryListItemTag1>
+                  {exercise.bodyPart}
+                </ExercisesDirectoryListItemTag1>
+                <ExercisesDirectoryListItemTag2>
+                  {exercise.target}
+                </ExercisesDirectoryListItemTag2>
+              </ExercisesDirectoryListItemTagContainer>
+              <ExercisesDirectoryListItemTitle>
+                {`${exercise.name}`.toUpperCase()}
+              </ExercisesDirectoryListItemTitle>
+              <ExercisesDirectoryListItem></ExercisesDirectoryListItem>
+            </ExercisesDirectoryListItemContainer>
+          );
+        })}
+      </ExercisesDirectoryListContainer>
+    </>
   );
 };
 

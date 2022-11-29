@@ -1,14 +1,14 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const ExercisesDirectoryListContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 1fr);
+  // grid-template-rows: repeat(3, 1fr);
   justify-items: center;
   align-items: center;
   max-width: 100%;
   min-height: 500px;
-
   margin: 0 auto;
   color: #000;
   font-size: 1rem;
@@ -21,17 +21,20 @@ export const ExercisesDirectoryListContainer = styled.div`
   }
 `;
 
-export const ExercisesDirectoryListItemContainer = styled.ul`
+export const ExercisesDirectoryListItemContainer = styled(Link)`
   text-align: center;
   justify-self: center;
   align-self: center;
   border-radius: 5px;
   background-color: #fff;
+  color: #000;
   width: 90%;
   min-width: 200px;
+  min-height: 434px;
   margin: 10px 0;
   padding: 20px 8px;
   cursor: pointer;
+  text-decoration: none;
 `;
 
 export const ExercisesDirectoryListItem = styled.li`
@@ -42,9 +45,7 @@ export const ExercisesDirectoryListItemImageContainer = styled.div`
   overflow: hidden;
 `;
 
-export const ExercisesDirectoryListItemImage = styled.img.attrs({
-  src: "https://cdn.dribbble.com/users/5501300/screenshots/15456745/media/ebfa85d44e6577c89166446d06840c28.gif",
-})`
+export const ExercisesDirectoryListItemImage = styled.img`
   max-width: 100%;
 `;
 
@@ -57,6 +58,9 @@ export const ExercisesDirectoryListItemTagContainer = styled.div`
   margin-left: 10px;
   font-size: 0.85rem;
   list-style: none;
+  text-transform: capitalize;
+  font-weight: bold;
+  color: #333;
 `;
 export const ExercisesDirectoryListItemTag1 = styled.p`
   padding: 10px;
