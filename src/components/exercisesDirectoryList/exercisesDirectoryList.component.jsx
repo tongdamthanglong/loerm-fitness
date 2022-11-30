@@ -76,11 +76,11 @@ const ExercisesDirectoryList = ({ exercises, setExercises, bodyPart }) => {
         pageCount={pageCount}
         previousLabel="< previous"
         renderOnZeroPageCount={null}
-        containerClassName="pagination"
-        pageLinkClassName="page-num"
-        previousLinkClassName="page-num"
-        nextLinkClassName="page-num"
-        activeLinkClassName="active-num"
+        // containerClassName="pagination"
+        // pageLinkClassName="page-num"
+        // previousLinkClassName="page-num"
+        // nextLinkClassName="page-num"
+        // activeLinkClassName="active-num"
       />
     </>
   );

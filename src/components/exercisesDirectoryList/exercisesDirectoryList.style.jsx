@@ -31,7 +31,7 @@ export const ExercisesDirectoryListItemContainer = styled(Link)`
   color: #000;
   width: 90%;
   min-width: 200px;
-  min-height: 460px;
+  min-height: 428px;
   margin: 10px 0;
   padding: 20px 8px;
   cursor: pointer;
@@ -90,15 +90,42 @@ export const ExercisesDirectoryListItemTitle = styled.p`
   font-weight: bold;
 `;
 
-export const ExercisesDirectoryListItemPagination = styled(ReactPaginate)`
+export const ExercisesDirectoryListItemPagination = styled(ReactPaginate).attrs(
+  {
+    containerClassName: "pagination",
+    pageLinkClassName: "page-num",
+    previousLinkClassName: "page-num",
+    nextLinkClassName: "page-num",
+    activeLinkClassName: "active-num",
+  }
+)`
+  .pagination {
+  }
+
+  .page-num {
+    margin: 5px;
+    padding: 10px;
+  }
+
+  .page-num:hover {
+    border-radius: 5px;
+    background-color: cyan;
+    color: #fff;
+  }
+
+  .active-num {
+    color: cyan;
+  }
+
   display: flex;
   justify-content: center;
   align-items: center;
   max-width: 90%;
-  gap: 10px;
+  gap: 20px;
   font-size: 1rem;
   color: #fff;
   margin: 30px auto;
+  margin-bottom: 50px;
   text-decoration: none;
   list-style: none;
   cursor: pointer;
