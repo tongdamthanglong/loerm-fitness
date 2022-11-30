@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import ReactPaginate from "react-paginate";
 
 export const ExercisesDirectoryListContainer = styled.div`
   display: grid;
@@ -8,15 +9,15 @@ export const ExercisesDirectoryListContainer = styled.div`
   justify-items: center;
   align-items: center;
   max-width: 100%;
-  min-height: 500px;
+  // min-height: 300px;
   margin: 0 auto;
   color: #000;
   font-size: 1rem;
   margin-top: 35px;
-  margin-bottom: 35px;
+  // margin-bottom: 500px;
 
   @media screen and (max-width: 800px) {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
   }
 `;
@@ -30,11 +31,15 @@ export const ExercisesDirectoryListItemContainer = styled(Link)`
   color: #000;
   width: 90%;
   min-width: 200px;
-  min-height: 434px;
+  min-height: 460px;
   margin: 10px 0;
   padding: 20px 8px;
   cursor: pointer;
   text-decoration: none;
+
+  // @media screen and (max-width: 800px) {
+  //   min-height: 450px;
+  // }
 `;
 
 export const ExercisesDirectoryListItem = styled.li`
@@ -83,4 +88,18 @@ export const ExercisesDirectoryListItemTitle = styled.p`
   margin-left: 10px;
   text-align: left;
   font-weight: bold;
+`;
+
+export const ExercisesDirectoryListItemPagination = styled(ReactPaginate)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 90%;
+  gap: 10px;
+  font-size: 1rem;
+  color: #fff;
+  margin: 30px auto;
+  text-decoration: none;
+  list-style: none;
+  cursor: pointer;
 `;

@@ -12,12 +12,34 @@ import {
   ExercisesDirectoryListItemTag1,
   ExercisesDirectoryListItemTag2,
   ExercisesDirectoryListItemTitle,
+  ExercisesDirectoryListItemPagination,
 } from "./exercisesDirectoryList.style";
+
 const ExercisesDirectoryList = ({ exercises, setExercises, bodyPart }) => {
+  const [currentItems, setCurrentItems] = useState([]);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+  const itemsPerPage = 6;
+
+  useEffect(() => {
+    const endOffset = itemOffset + itemsPerPage;
+    console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+    setCurrentItems(exercises.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(exercises.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage, exercises]);
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % exercises.length;
+    console.log(
+      `User requested page number ${event.selected}, which is offset ${newOffset}`
+    );
+    setItemOffset(newOffset);
+  };
+
   return (
     <>
       <ExercisesDirectoryListContainer>
-        {exercises.map((exercise) => {
+        {currentItems.map((exercise) => {
           return (
             <ExercisesDirectoryListItemContainer
               key={exercise.id}
@@ -46,6 +68,20 @@ const ExercisesDirectoryList = ({ exercises, setExercises, bodyPart }) => {
           );
         })}
       </ExercisesDirectoryListContainer>
+      <ExercisesDirectoryListItemPagination
+        breakLabel="..."
+        nextLabel="next >"
+        onPageChange={handlePageClick}
+        // pageRangeDisplayed={10}
+        pageCount={pageCount}
+        previousLabel="< previous"
+        renderOnZeroPageCount={null}
+        containerClassName="pagination"
+        pageLinkClassName="page-num"
+        previousLinkClassName="page-num"
+        nextLinkClassName="page-num"
+        activeLinkClassName="active-num"
+      />
     </>
   );
 };
