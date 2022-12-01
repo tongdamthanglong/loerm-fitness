@@ -66,36 +66,49 @@ const ExercisesDirectoryList = ({ exercises, setExercises, bodyPart }) => {
 
   return (
     <>
-      <ExercisesDirectoryListContainer>
-        {currentItems.map((exercise) => {
-          return (
-            <ExercisesDirectoryListItemContainer
-              key={exercise.id}
-              to={`/exercise/${exercise.id}`}
-            >
-              <ExercisesDirectoryListItemImageContainer>
-                <ExercisesDirectoryListItemImage
-                  src={exercise.gifUrl}
-                  alt={exercise.name}
-                  loading="lazy"
-                />
-              </ExercisesDirectoryListItemImageContainer>
-              <ExercisesDirectoryListItemTagContainer>
-                <ExercisesDirectoryListItemTag1>
-                  {exercise.bodyPart}
-                </ExercisesDirectoryListItemTag1>
-                <ExercisesDirectoryListItemTag2>
-                  {exercise.target}
-                </ExercisesDirectoryListItemTag2>
-              </ExercisesDirectoryListItemTagContainer>
-              <ExercisesDirectoryListItemTitle>
-                {`${exercise.name}`.toUpperCase()}
-              </ExercisesDirectoryListItemTitle>
-              <ExercisesDirectoryListItem></ExercisesDirectoryListItem>
-            </ExercisesDirectoryListItemContainer>
-          );
-        })}
-      </ExercisesDirectoryListContainer>
+      {!exercises == [] ? (
+        <p
+          style={{
+            textAlign: "center",
+            color: "#fff",
+            fontSize: "1rem",
+          }}
+        >
+          API Monthly Limit Request...
+        </p>
+      ) : (
+        <ExercisesDirectoryListContainer>
+          {currentItems.map((exercise) => {
+            return (
+              <ExercisesDirectoryListItemContainer
+                key={exercise.id}
+                to={`/exercise/${exercise.id}`}
+              >
+                <ExercisesDirectoryListItemImageContainer>
+                  <ExercisesDirectoryListItemImage
+                    src={exercise.gifUrl}
+                    alt={exercise.name}
+                    loading="lazy"
+                  />
+                </ExercisesDirectoryListItemImageContainer>
+                <ExercisesDirectoryListItemTagContainer>
+                  <ExercisesDirectoryListItemTag1>
+                    {exercise.bodyPart}
+                  </ExercisesDirectoryListItemTag1>
+                  <ExercisesDirectoryListItemTag2>
+                    {exercise.target}
+                  </ExercisesDirectoryListItemTag2>
+                </ExercisesDirectoryListItemTagContainer>
+                <ExercisesDirectoryListItemTitle>
+                  {`${exercise.name}`.toUpperCase()}
+                </ExercisesDirectoryListItemTitle>
+                <ExercisesDirectoryListItem></ExercisesDirectoryListItem>
+              </ExercisesDirectoryListItemContainer>
+            );
+          })}
+        </ExercisesDirectoryListContainer>
+      )}
+
       <ExercisesDirectoryListItemPagination
         breakLabel="..."
         nextLabel=">"
