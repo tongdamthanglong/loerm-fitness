@@ -36,6 +36,26 @@ const ExercisesDirectoryList = ({ exercises, setExercises, bodyPart }) => {
     setItemOffset(newOffset);
   };
 
+  useEffect(() => {
+    const fetchExercisesData = async () => {
+      let exercisesData = [];
+
+      if (bodyPart === "all") {
+        exercisesData = await fetchData(
+          "https://exercisedb.p.rapidapi.com/exercises",
+          exerciseOptions
+        );
+      } else {
+        exercisesData = await fetchData(
+          `https://exercisedb.p.rapidapi.com/exercises/bodyPartList/${bodyPart}`,
+          exerciseOptions
+        );
+      }
+      setExercises(exercisesData);
+    };
+    fetchExercisesData();
+  }, [bodyPart]);
+
   return (
     <>
       <ExercisesDirectoryListContainer>
@@ -70,11 +90,11 @@ const ExercisesDirectoryList = ({ exercises, setExercises, bodyPart }) => {
       </ExercisesDirectoryListContainer>
       <ExercisesDirectoryListItemPagination
         breakLabel="..."
-        nextLabel="next >"
+        nextLabel=">"
         onPageChange={handlePageClick}
         // pageRangeDisplayed={10}
         pageCount={pageCount}
-        previousLabel="< previous"
+        previousLabel="<"
         renderOnZeroPageCount={null}
         // containerClassName="pagination"
         // pageLinkClassName="page-num"

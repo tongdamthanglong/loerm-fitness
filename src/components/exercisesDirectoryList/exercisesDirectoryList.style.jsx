@@ -121,7 +121,7 @@ export const ExercisesDirectoryListItemPagination = styled(ReactPaginate).attrs(
   justify-content: center;
   align-items: center;
   max-width: 90%;
-  gap: 20px;
+  gap: 5px;
   font-size: 1rem;
   color: #fff;
   margin: 30px auto;

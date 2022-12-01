@@ -4,7 +4,13 @@ import {
   ExercisesDirectoryItem,
 } from "./exercisesDirectory.style";
 
-const ExercisesDirectory = ({ data, exercises, setExercises, bodyPart }) => {
+const ExercisesDirectory = ({
+  data,
+  exercises,
+  setExercises,
+  bodyPart,
+  setBodyPart,
+}) => {
   return (
     <>
       <ExercisesDirectoryContainer>
@@ -13,6 +19,7 @@ const ExercisesDirectory = ({ data, exercises, setExercises, bodyPart }) => {
             <ExercisesDirectoryItemContainer
               key={item.id || item}
               itemId={item.id || item}
+              onClick={() => setBodyPart(item)}
             >
               <ExercisesDirectoryItem>
                 {item.toUpperCase()}
