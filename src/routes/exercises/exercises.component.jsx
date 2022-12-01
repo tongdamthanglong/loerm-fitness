@@ -15,32 +15,41 @@ const Exercises = () => {
 
   useEffect(() => {
     const fetchExercisesData = async () => {
-      const bodyPartsData = await fetchData(
-        "https://exercisedb.p.rapidapi.com/exercises/bodyPartList",
-        exerciseOptions
-      );
-      setBodyParts(["all", ...bodyPartsData]);
+      try {
+        const bodyPartsData = await fetchData(
+          "https://exercisedb.p.rapidapi.com/exercises/bodyPartList",
+          exerciseOptions
+        );
+        setBodyParts(["all", ...bodyPartsData]);
+      } catch (error) {
+        setBodyParts([]);
+        console.log(error.message);
+      }
     };
     fetchExercisesData();
   }, []);
 
   const handleSearch = async () => {
-    if (search) {
-      const exercisesData = await fetchData(
-        "https://exercisedb.p.rapidapi.com/exercises",
-        exerciseOptions
-      );
-      // console.log(exercisesData);
-      const searchedExercise = exercisesData.filter(
-        (exercise) =>
-          exercise.name.toLowerCase().includes(search) ||
-          exercise.target.toLowerCase().includes(search) ||
-          exercise.bodyPart.toLowerCase().includes(search) ||
-          exercise.equipment.toLowerCase().includes(search)
-      );
-      setSearch("");
-      console.log(search);
-      setExercises(searchedExercise);
+    try {
+      if (search) {
+        const exercisesData = await fetchData(
+          "https://exercisedb.p.rapidapi.com/exercises",
+          exerciseOptions
+        );
+        // console.log(exercisesData);
+        const searchedExercise = exercisesData.filter(
+          (exercise) =>
+            exercise.name.toLowerCase().includes(search) ||
+            exercise.target.toLowerCase().includes(search) ||
+            exercise.bodyPart.toLowerCase().includes(search) ||
+            exercise.equipment.toLowerCase().includes(search)
+        );
+        setSearch("");
+        setExercises(searchedExercise);
+      }
+    } catch (error) {
+      setExercises([]);
+      console.log(error.message);
     }
   };
   const handleChange = (e) => {

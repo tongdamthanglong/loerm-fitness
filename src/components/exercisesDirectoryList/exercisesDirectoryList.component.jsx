@@ -22,10 +22,14 @@ const ExercisesDirectoryList = ({ exercises, setExercises, bodyPart }) => {
   const itemsPerPage = 6;
 
   useEffect(() => {
-    const endOffset = itemOffset + itemsPerPage;
-    console.log(`Loading items from ${itemOffset} to ${endOffset}`);
-    setCurrentItems(exercises.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(exercises.length / itemsPerPage));
+    if (exercises == []) {
+      const endOffset = itemOffset + itemsPerPage;
+      console.log(`Loading items from ${itemOffset} to ${endOffset}`);
+      setCurrentItems(exercises.slice(itemOffset, endOffset));
+      setPageCount(Math.ceil(exercises.length / itemsPerPage));
+    } else {
+      console.log("API Monthly Limit");
+    }
   }, [itemOffset, itemsPerPage, exercises]);
 
   const handlePageClick = (event) => {
@@ -39,19 +43,23 @@ const ExercisesDirectoryList = ({ exercises, setExercises, bodyPart }) => {
   useEffect(() => {
     const fetchExercisesData = async () => {
       let exercisesData = [];
-
-      if (bodyPart === "all") {
-        exercisesData = await fetchData(
-          "https://exercisedb.p.rapidapi.com/exercises",
-          exerciseOptions
-        );
-      } else {
-        exercisesData = await fetchData(
-          `https://exercisedb.p.rapidapi.com/exercises/bodyPartList/${bodyPart}`,
-          exerciseOptions
-        );
+      try {
+        if (bodyPart === "all") {
+          exercisesData = await fetchData(
+            "https://exercisedb.p.rapidapi.com/exercises",
+            exerciseOptions
+          );
+        } else {
+          exercisesData = await fetchData(
+            `https://exercisedb.p.rapidapi.com/exercises/bodyPartList/${bodyPart}`,
+            exerciseOptions
+          );
+        }
+        setExercises(exercisesData);
+      } catch (error) {
+        setExercises([]);
+        console.log(error.message);
       }
-      setExercises(exercisesData);
     };
     fetchExercisesData();
   }, [bodyPart]);
