@@ -71,7 +71,7 @@ const ExercisesDirectoryList = ({ exercises, setExercises, bodyPart }) => {
           style={{
             textAlign: "center",
             color: "#fff",
-            fontSize: "1rem",
+            fontSize: "1.5rem",
           }}
         >
           API Monthly Limit Request...

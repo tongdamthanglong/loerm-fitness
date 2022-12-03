@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Outlet } from "react-router-dom";
 import { fetchData, exerciseOptions } from "../../utils/fetchData";
 
 import SearchBox from "../../components/searchBox/searchBox.component";
@@ -79,6 +80,7 @@ const Exercises = () => {
           bodyPart={bodyPart}
         />
       </ExercisesContainer>
+      <Outlet />
     </>
   );
 };
